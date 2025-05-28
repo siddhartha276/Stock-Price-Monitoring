@@ -6,9 +6,9 @@ The project is build **LangChain** framework which is used to develop **RAG(Retr
 <br />
 If you are unaware about any of the following concepts do check these short video by IBM.
 <br />
-langChain - https://youtu.be/1bUy-1hGZpI?si=qaA2Qabx6nk4FqCT
+**LangChain** - https://youtu.be/1bUy-1hGZpI?si=qaA2Qabx6nk4FqCT
 <br />
-RAG - https://youtu.be/T-D1OfcDW1M?si=6DfIQx-IQ0tUD6V0
+**RAG** - https://youtu.be/T-D1OfcDW1M?si=6DfIQx-IQ0tUD6V0
 
 <br />
 
