@@ -1,6 +1,10 @@
 # Stock-Price-Monitoring
 
 The project's aim is to automatically fetch stock data from the NSE. Currently, it can fetch any stock's dividends, events, 3 months' data, and yesterday's/today's data provided that the current trading session has ended and the data has been uploaded on the website.
+The project is build **LangChain** framework which is used to develop **RAG(Retrival Augmented Generation)** based systems.
+If you are unaware about any of the following concepts do check these short video by IBM.
+langChain - https://youtu.be/1bUy-1hGZpI?si=qaA2Qabx6nk4FqCT
+RAG - https://youtu.be/T-D1OfcDW1M?si=6DfIQx-IQ0tUD6V0
 
 <br />
 
@@ -45,6 +49,27 @@ Contains a list of companies whose data you want to scrape. It also disables imp
 
 - **add_to_mongo.py**  
 Helps in adding the scraped data to MongoDB, which is used later to display charts about stock prices on the website.
+
+### 2) ChatBot
+
+This folder serves two primary purposes:  
+1. Performing word embeddings and storing them in the vector database.  
+2. Running a chatbot that takes user queries, embeds them using the same embedding model, and performs a similarity search in the vector store to retrieve relevant information.
+
+---
+
+####  Word Embedding
+
+The project uses the **`RecursiveCharacterTextSplitter`** from **LangChain** to split raw text into multiple manageable chunks before embedding. This process is essential and offers several benefits:
+
+1. **Handles non-uniform document lengths** — Ensures consistent chunk sizes for better downstream processing.  
+2. **Overcomes model limitations** — Many embedding and language models have maximum token limits; chunking allows even long documents to be processed effectively.  
+3. **Improves embedding quality** — Shorter, focused chunks lead to better semantic representations.  
+4. **Enhances retrieval precision** — Enables more accurate similarity matching during searches.  
+5. **Optimizes resource usage** — Reduces memory and compute load by avoiding massive text blobs.
+
+The `RecursiveCharacterTextSplitter` also uses a parameter called `chunk_overlap`, which overlaps a portion of the previous chunk with the next. This overlap helps preserve context across chunk boundaries, ensuring coherent semantic understanding.
+
 
 ---
 
