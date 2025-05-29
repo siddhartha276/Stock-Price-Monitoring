@@ -12,6 +12,13 @@ If you are unaware about any of the following concepts do check these short vide
 
 <br />
 
+### Installing all the necessary libraries
+```
+pip install flask flask-cors selenium pymongo python-dotenv \
+langchain langchain-community langchain-huggingface huggingface_hub
+
+```
+
 # LLM Used in the Project
 
 1) **Mixtral-8x7B** – Used as the main LLM to answer user queries regarding stocks, such as opening price, closing price, previous closing, volume traded, value of the traded volume, etc., and for comparing values of two different days.  
@@ -60,8 +67,6 @@ This folder serves two primary purposes:
 1. Performing **word embeddings** and storing them in the vector database.  
 2. Running a **chatbot** that takes user queries, embeds them using the same embedding model, and performs a similarity search in the vector store to retrieve relevant information.
 
----
-
 ####  Word Embedding
 
 The project uses the **`RecursiveCharacterTextSplitter`** from **LangChain** to split raw text into multiple manageable chunks before embedding. This process is essential and offers several benefits:
@@ -95,3 +100,4 @@ We initialize the Mixtral model then the Nomic model for word embedding and fina
 
 The app.py acts as a server to take the user generated text from the web application and generate a response for the user. The server runs on 5001 of the local machine. It uses POST method for sending the response back to the client.
 
+---
