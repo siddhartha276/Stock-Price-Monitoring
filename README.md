@@ -19,12 +19,12 @@ langchain langchain-community langchain-huggingface huggingface_hub
 
 ```
 
-# LLM Used in the Project
+### LLM Used in the Project
 
 1) **Mixtral-8x7B** – Used as the main LLM to answer user queries regarding stocks, such as opening price, closing price, previous closing, volume traded, value of the traded volume, etc., and for comparing values of two different days.  
 2) **nomic-embed-text-v2** – Used to create word embeddings of the data collected from the NSE and user input to enable efficient searching in the database.
 
-# Database
+#### Database
 
 The project uses **ChromaDB** to store all the vector embeddings.
 
@@ -60,6 +60,8 @@ Contains a list of companies whose data you want to scrape. It also disables imp
 
 - **add_to_mongo.py**  
 Helps in adding the scraped data to MongoDB, which is used later to display charts about stock prices on the website.
+
+---
 
 ### 2) ChatBot
 
