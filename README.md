@@ -57,8 +57,8 @@ Helps in adding the scraped data to MongoDB, which is used later to display char
 ### 2) ChatBot
 
 This folder serves two primary purposes:  
-1. Performing word embeddings and storing them in the vector database.  
-2. Running a chatbot that takes user queries, embeds them using the same embedding model, and performs a similarity search in the vector store to retrieve relevant information.
+1. Performing **word embeddings** and storing them in the vector database.  
+2. Running a **chatbot** that takes user queries, embeds them using the same embedding model, and performs a similarity search in the vector store to retrieve relevant information.
 
 ---
 
@@ -74,6 +74,24 @@ The project uses the **`RecursiveCharacterTextSplitter`** from **LangChain** to 
 
 The `RecursiveCharacterTextSplitter` also uses a parameter called `chunk_overlap`, which overlaps a portion of the previous chunk with the next. This overlap helps preserve context across chunk boundaries, ensuring coherent semantic understanding.
 
+####  Chatbot
+
+We initialize the Mixtral model then the Nomic model for word embedding and finally connect the database. It uses a set of hugging face funcitons.
+1) **similarity_search** - It goes through the vector database and searches for the similar context for the given user query. The function has a parameter as k which gives k similar context.
+2) A predifined promt is used to give it to the LLM for finding the response to user query along with the context found in the similarity search.
+   Something like this - 
+   ```
+   prompt = f"Use the following context to answer the question:\n\nContext:\n{context}\n\nQuestion:\n{query}"
+   ```
+3) **text_generation** - Is used to generate response to the user. It takes a set of parameters as inputs.
+     i) prompt=prompt,           gives the prompt we generated above.
+    ii) max_new_tokens=200,      maximium number of tokens to use while generating response (default is set to 100).
+   iii) temperature=0.7,         used to create randomness of the logits( Raw scores for possible next tokens ).
+    iv) do_sample=True,          it allows LLM to chose random logits, if set to false picks the one with most probability even when temperature is set.
 
 ---
+
+### Backend Server
+
+The app.py acts as a server to take the user generated text from the web application and generate a response for the user. The server runs on 5001 of the local machine. It uses POST method for sending the response back to the client.
 
